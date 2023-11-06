@@ -5,8 +5,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.Configure<LeagueApiOptions>
-    (builder.Configuration.GetSection("LeagueApiOptions"));
+builder.Services.AddHttpClient();
+builder.Services.Configure<LeagueApiOptions>(options =>
+    options.BaseUrl = builder.Configuration["ConnectionStrings:LeagueApiRoute"]);
+
 
 builder.Services.AddSingleton<ILeagueApiCaller, LeagueApiCaller>();
 
