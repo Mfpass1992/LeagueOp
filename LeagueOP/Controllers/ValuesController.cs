@@ -10,7 +10,7 @@ namespace LeagueOP.Controllers
         [HttpGet]
         public async Task<string> Get()
         {
-            return "asdasdad";
+            return "DDDD Hura!";
         }
     }
 }
