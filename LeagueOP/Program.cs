@@ -1,8 +1,14 @@
+using LeagueOP.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.Configure<LeagueApiOptions>
+    (builder.Configuration.GetSection("LeagueApiOptions"));
+
+builder.Services.AddSingleton<ILeagueApiCaller, LeagueApiCaller>();
 
 var app = builder.Build();
 
